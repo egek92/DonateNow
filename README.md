@@ -8,7 +8,7 @@
 
 2) Clone the project on Desktop `git clone https://github.com/egek92/DonateNow.git`
 
-3) Go to the project folder `cd Desktop\ionic2`
+3) Go to the project folder `cd Desktop/ionic2`
 
 4) `npm install` install the required packages
 
