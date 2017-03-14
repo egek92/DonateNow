@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Search
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+  <ion-item>
+    <ion-label>Blood Type</ion-label>
+    <ion-select [(ngModel)]="bloodtype">
+      <ion-option value="ap">A Rh+</ion-option>
+      <ion-option value="an">A Rh-</ion-option>
+      <ion-option value="bp">B Rh+</ion-option>
+      <ion-option value="bn">B Rh-</ion-option>
+      <ion-option value="abp">AB Rh+</ion-option>
+      <ion-option value="abn">AB Rh-</ion-option>
+      <ion-option value="zp">0 Rh+</ion-option>
+      <ion-option value="zn">0 Rh-</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+  <ion-range [(ngModel)]="range">
+    <ion-icon range-left small name>0km</ion-icon>
+    <ion-icon range-right small name>100km</ion-icon>
+  </ion-range>
+</ion-item>
+
+<button ion-button full icon-left (click)="presentLoading()">
+  <ion-icon name="search"></ion-icon>
+  Search
+</button>
+</ion-list>
+
+
+
+</ion-content>
