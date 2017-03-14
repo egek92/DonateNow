@@ -1,14 +1,14 @@
 <ion-header>
- 
+
   <ion-navbar color="secondary">
-    <ion-title>List</ion-title>
+    <ion-title>Donors</ion-title>
   </ion-navbar>
- 
+
 </ion-header>
- 
- 
+
+
 <ion-content>
- 
+
     <ion-list no-lines>
         <ion-item *ngFor="let location of locations.data">
             <ion-avatar item-left>
@@ -18,5 +18,5 @@
             <p>{{location.distance}} miles</p>
         </ion-item>
     </ion-list>
- 
+
 </ion-content>
