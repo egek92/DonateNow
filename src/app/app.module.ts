@@ -8,6 +8,16 @@ import { SearchPage } from '../pages/search/search';
 import { Locations } from '../providers/locations';
 import { GoogleMaps } from '../providers/google-maps';
 import { Connectivity } from '../providers/connectivity';
+import { AngularFireModule } from 'angularfire2';
+
+// FireBase Database Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyA6n7-cZS4EXKhoUJ_FkSKdD4ZhbtkxGfQ",
+    authDomain: "nsfc-ca38e.firebaseapp.com",
+    databaseURL: "https://nsfc-ca38e.firebaseio.com",
+    storageBucket: "nsfc-ca38e.appspot.com",
+    messagingSenderId: "270837763067"
+};
 
 @NgModule({
   declarations: [
@@ -18,7 +28,8 @@ import { Connectivity } from '../providers/connectivity';
     SearchPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
