@@ -62,7 +62,7 @@ export class ListPage {
           // this.testCheckboxResult = data;
 
           this.bloods.push({
-            type: data.type
+            type: data[0]
           });
         }
       });
