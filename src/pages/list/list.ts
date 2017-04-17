@@ -29,26 +29,55 @@ export class ListPage {
 
     addBlood(){
       let alert = this.alertCtrl.create();
-      alert.setTitle('Which planets have you visited?');
+      alert.setTitle('Choose your blood type');
 
       alert.addInput({
-        type: 'checkbox',
-        label: 'A RH-',
-        value: 'A RH-',
-        checked: true
+        type: 'radio',
+        label: 'A Rh-',
+        value: 'A Rh-',
+        checked: false
       });
 
       alert.addInput({
-        type: 'checkbox',
-        label: 'A RH+',
-        value: 'A RH+'
+        type: 'radio',
+        label: 'A Rh+',
+        value: 'A Rh+'
       });
 
       alert.addInput({
-        type: 'checkbox',
-        label: 'AB RH-',
-        value: 'AB RH-',
-        checked: true
+        type: 'radio',
+        label: 'B Rh-',
+        value: 'B Rh-',
+      });
+
+      alert.addInput({
+        type: 'radio',
+        label: 'B Rh+',
+        value: 'B Rh+',
+      });
+
+      alert.addInput({
+        type: 'radio',
+        label: 'AB Rh-',
+        value: 'AB Rh-'
+      });
+
+      alert.addInput({
+        type: 'radio',
+        label: 'AB Rh+',
+        value: 'AB Rh+',
+      });
+
+      alert.addInput({
+        type: 'radio',
+        label: '0 Rh-',
+        value: '0 Rh-'
+      });
+
+      alert.addInput({
+        type: 'radio',
+        label: '0 Rh+',
+        value: '0 Rh+',
       });
 
       alert.addButton('Cancel');
@@ -62,7 +91,7 @@ export class ListPage {
           // this.testCheckboxResult = data;
 
           this.bloods.push({
-            type: data[0]
+            type: data
           });
         }
       });
