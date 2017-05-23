@@ -1,18 +1,23 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>
-      Map
-    </ion-title>
+  <ion-navbar color="light">
+    <ion-buttons >
+
+      <button ion-button icon-only (click)="pushAddPage($event)">
+        <ion-title end>Be Donor </ion-title>
+        <ion-icon name="add" end></ion-icon>
+      </button>
+
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
 
+
   <div #pleaseConnect id="please-connect">
     <p>No connection!</p>
   </div>
-
   <div #map id="map"></div>
 
 </ion-content>

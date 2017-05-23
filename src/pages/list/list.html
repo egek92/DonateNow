@@ -1,13 +1,8 @@
 <ion-header>
 
-  <ion-navbar color="secondary">
-    <ion-buttons end>
+  <ion-navbar >
 
-        <button ion-button icon-only (click)="addBlood()">
-          <ion-icon name="add"></ion-icon>
-        </button>
 
-      </ion-buttons>
     <ion-title>Donors</ion-title>
   </ion-navbar>
 
@@ -16,11 +11,46 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let blood of bloods | async" (click)="showOptions(blood.$key, blood.type)">
-      {{blood.type}}
-          <ion-avatar item-left>
-                <ion-icon name="pin"></ion-icon>
-            </ion-avatar>
+
+    <ion-item>
+      <ion-label>Blood Type</ion-label>
+      <ion-select [(ngModel)]="bloodtype">
+        <ion-option value="A Rh+">A Rh+</ion-option>
+        <ion-option value="A Rh-">A Rh-</ion-option>
+        <ion-option value="B Rh+">B Rh+</ion-option>
+        <ion-option value="B Rh-">B Rh-</ion-option>
+        <ion-option value="AB Rh+">AB Rh+</ion-option>
+        <ion-option value="AB Rh-">AB Rh-</ion-option>
+        <ion-option value="0 Rh+">0 Rh+</ion-option>
+        <ion-option value="0 Rh-">0 Rh-</ion-option>
+      </ion-select>
     </ion-item>
+
+    <ion-item>
+      <ion-label>Age </ion-label>
+      <ion-input [(ngModel)]="age" type="text" value="" placeholder=""></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="gender">
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Phone </ion-label>
+      <ion-input [(ngModel)]="phone" type="phone" value="" placeholder=""></ion-input>
+    </ion-item>
+
+
   </ion-list>
+
+
+
+  <button color="light" ion-button  full (click)= "addBlood()">BE DONOR</button>
+
+
 </ion-content>

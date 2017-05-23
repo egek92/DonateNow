@@ -1,5 +1,22 @@
-<ion-tabs color="light">
-  <ion-tab [root]="tab1Root" tabTitle="Map" tabIcon="navigate"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Donors" tabIcon="list"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Search" tabIcon="search"></ion-tab>
-</ion-tabs>
+<!-- <ion-header>
+<ion-navbar>
+<ion-title>
+
+</ion-title>
+</ion-navbar>
+</ion-header> -->
+
+<ion-content class="home" >
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <button (click)="addBlood($event)" color=""  id="be" ion-button round>Be Donor</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <button (click)="findBlood($event)" color="danger" ion-button round>FIND DONOR</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

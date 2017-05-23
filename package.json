@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.0.0",
+    "@ionic/cli-plugin-cordova": "0.0.12",
+    "@ionic/cli-plugin-ionic1": "0.0.6",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
@@ -48,5 +50,5 @@
       "locator": "ios"
     }
   ],
-  "description": "ionic2-google-maps-nearby: An Ionic project"
+  "description": "ionic2-donatenow"
 }

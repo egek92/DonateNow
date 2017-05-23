@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Connectivity } from './connectivity';
 import { Geolocation } from 'ionic-native';
+import {NavController} from 'ionic-angular';
+import { ListPage } from '../pages/list/list';
 
 declare var google;
 
@@ -56,12 +58,12 @@ export class GoogleMaps {
           if(this.apiKey){
             script.src = 'http://maps.google.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
           } else {
-            script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';       
+            script.src = 'http://maps.google.com/maps/api/js?callback=mapInit';
           }
 
-          document.body.appendChild(script);  
+          document.body.appendChild(script);
 
-        } 
+        }
       }
       else {
 
@@ -89,7 +91,7 @@ export class GoogleMaps {
 
       Geolocation.getCurrentPosition().then((position) => {
 
-        // UNCOMMENT FOR NORMAL USE
+
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         //let latLng = new google.maps.LatLng(40.713744, -74.009056);
@@ -145,7 +147,7 @@ export class GoogleMaps {
 
         if(typeof google == "undefined" || typeof google.maps == "undefined"){
           this.loadGoogleMaps();
-        } 
+        }
         else {
           if(!this.mapInitialised){
             this.initMap();
@@ -177,10 +179,10 @@ export class GoogleMaps {
       position: latLng
     });
 
-    this.markers.push(marker);  
+    this.markers.push(marker);
 
   }
-  // Transfer latLng to specified Address 
+
   geocodeLatLng(latLng: any,geocoder: any, infowindow:any,distanceToYou: any): void{
     geocoder.geocode({'location': latLng}, (results, status) => {
       if (status === 'OK') {
@@ -190,8 +192,23 @@ export class GoogleMaps {
             animation: google.maps.Animation.DROP,
             map: this.map
           });
+
+          //
+          // var contentString = "<div><button class='button button-clear button-positive' ng-click='clickTest()'>Click Me</button></div>";
+          // var compiled = $compile(contentString)($scope);
+          //
+          //         var infowindow = new google.maps.InfoWindow({
+          //           content: compiled[0]
+          //         });
+          //
+          //         $scope.clickTest = function() {
+          //                 alert('Example of infowindow with ng-click')
+          //               };
+
+
           this.markers.push(marker);
-          infowindow.setContent(results[1].formatted_address+'<p style="color: red;">'+distanceToYou+" miles from your location</p>");
+        //  infowindow.setContent('<button style="font-size: 2.5em; color: light; font-weight: bold; background: NONE;" (onclick)="launchAddPage">BE DONOR</button>');
+          infowindow.setContent('<button style="font-size: 1.5em; color: red; font-weight: bold; background: NONE;" ion-button (click)="launchAddPage">BE DONOR</button>' + "</br>" + results[1].formatted_address+'<p style="color: red;">'+distanceToYou+" miles from your location</p>");
           infowindow.open(this.map, marker);
         } else {
           window.alert('No results found');
@@ -202,7 +219,7 @@ export class GoogleMaps {
     });
   }
 
-  // Removes the markers from the map, but keeps them in the array.
+
   setMapOnAll(map) {
     for (var i = 0; i < this.markers.length; i++) {
       this.markers[i].setMap(map);
@@ -212,7 +229,7 @@ export class GoogleMaps {
     this.setMapOnAll(null);
     this.markers = [];
   }
-  //move this funciton from location.ts
+
   getDistanceBetweenPoints(start, end, units){
 
     let earthRadius = {
@@ -226,6 +243,12 @@ export class GoogleMaps {
     let lat2 = end.coords.latitude;
     let lon2 = end.coords.longitude;
 
+    console.log(lat1 , lon1);
+  /*  this.navController.push(ListPage, {
+    lat: lat1, lon: lon1
+}); */
+    //bunu listpage e ordan da firebase e atmak lazım
+
     let dLat = this.toRad((lat2 - lat1));
     let dLon = this.toRad((lon2 - lon1));
     let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -235,6 +258,9 @@ export class GoogleMaps {
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     let d = R * c;
     console.log('distanceToYou '+d);
+
+
+
     return d;
   }
   toRad(x){

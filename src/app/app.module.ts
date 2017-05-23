@@ -9,23 +9,29 @@ import { Locations } from '../providers/locations';
 import { GoogleMaps } from '../providers/google-maps';
 import { Connectivity } from '../providers/connectivity';
 import { AngularFireModule } from 'angularfire2';
+import { Storage } from '@ionic/storage';
+import { TabsPage } from '../pages/tabs/tabs';
+
 
 // FireBase Database Settings
 export const firebaseConfig = {
   apiKey: "AIzaSyA6n7-cZS4EXKhoUJ_FkSKdD4ZhbtkxGfQ",
-    authDomain: "nsfc-ca38e.firebaseapp.com",
-    databaseURL: "https://nsfc-ca38e.firebaseio.com",
-    storageBucket: "nsfc-ca38e.appspot.com",
-    messagingSenderId: "270837763067"
+  authDomain: "nsfc-ca38e.firebaseapp.com",
+  databaseURL: "https://nsfc-ca38e.firebaseio.com",
+  storageBucket: "nsfc-ca38e.appspot.com",
+  messagingSenderId: "270837763067"
 };
 
 @NgModule({
+
   declarations: [
     MyApp,
     HomePage,
     MapPage,
     ListPage,
-    SearchPage
+    SearchPage,
+    TabsPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -37,7 +43,9 @@ export const firebaseConfig = {
     HomePage,
     MapPage,
     ListPage,
-    SearchPage
+    SearchPage,
+    TabsPage
+
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Locations, GoogleMaps, Connectivity]
 })

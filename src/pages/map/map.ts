@@ -2,6 +2,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Locations } from '../../providers/locations';
 import { GoogleMaps } from '../../providers/google-maps';
 import { NavController, Platform } from 'ionic-angular';
+
+import { ListPage } from '../list/list';
+
  declare var google;
 @Component({
   selector: 'page-map',
@@ -12,8 +15,11 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
 
-  constructor(public navCtrl: NavController, public maps: GoogleMaps, public platform: Platform, public locations: Locations) {
+  constructor(public navCtrl1: NavController, public maps: GoogleMaps, public platform: Platform, public locations: Locations) {
+  }
 
+  pushAddPage(event){
+    this.navCtrl1.push(ListPage);
   }
 
   ionViewDidLoad(){
@@ -25,6 +31,7 @@ export class MapPage {
         locationsLoaded
       ]).then((result) => {
         let locations = result[1];
+        
         for(let location of locations){
             this.maps.addMarker(location.latitude, location.longitude);
         }

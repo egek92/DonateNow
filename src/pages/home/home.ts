@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
 import { MapPage } from '../map/map';
-import { ListPage } from '../list/list';
-import { SearchPage } from '../search/search'
+import { SearchPage } from '../search/search';
+import { TabsPage } from '../tabs/tabs';
+import {ListPage} from '../list/list';
 
 @Component({
   selector: 'page-home',
@@ -9,12 +12,22 @@ import { SearchPage } from '../search/search'
 })
 export class HomePage {
 
-  tab1Root: any = MapPage;
-  tab2Root: any = ListPage;
-  tab3Root: any = SearchPage;
-
-  constructor(){
+  constructor(public navCtrl: NavController) {
 
   }
+
+  addBlood(event) {
+
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.push(ListPage);
+
+  }
+
+
+  findBlood(event) {
+
+    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.push(SearchPage);
+}
 
 }
