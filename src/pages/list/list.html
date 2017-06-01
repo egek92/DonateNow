@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header >
 
-  <ion-navbar >
+  <ion-navbar color="danger">
 
 
     <ion-title>Donors</ion-title>
@@ -28,7 +28,7 @@
 
     <ion-item>
       <ion-label>Age </ion-label>
-      <ion-input [(ngModel)]="age" type="text" value="" placeholder=""></ion-input>
+      <ion-input [(ngModel)]="age" type="number" value="" placeholder=""></ion-input>
     </ion-item>
 
 
@@ -42,15 +42,22 @@
 
     <ion-item>
       <ion-label>Phone </ion-label>
-      <ion-input [(ngModel)]="phone" type="phone" value="" placeholder=""></ion-input>
-    </ion-item>
+      <ion-input [(ngModel)]="phone" type="number" value="" placeholder="" ></ion-input>
+
+
+  </ion-item>
+
+
+
+
+
 
 
   </ion-list>
 
 
 
-  <button color="light" ion-button  full (click)= "addBlood()">BE DONOR</button>
+  <button color="red" ion-button  full (click)= "addBlood()">BE DONOR</button>
 
 
 </ion-content>

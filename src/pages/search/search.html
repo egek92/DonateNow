@@ -28,7 +28,7 @@
     <ion-item>
     <ion-range min="0" max="100" [(ngModel)]="distance" color="secondary">
       <ion-label range-left>0km</ion-label>
-      <ion-label range-right>100km</ion-label>
+      <ion-label range-right>50km</ion-label>
     </ion-range>
   </ion-item>
 
@@ -40,12 +40,19 @@
       </ion-card-header>
       <img src="https://firebasestorage.googleapis.com/v0/b/nsfc-ca38e.appspot.com/o/Untitled-1.png?alt=media&token=14652c1c-b8f8-4f85-8c5d-7532e7928482"/>
       <ion-card-content>
+
         <p>
           phone: {{ blood.phone }}
         </p>
         <p>
           Gender: {{ blood.gender }}
         </p>
+
+        <p>
+          Distance: {{ blood.d | currency:'USD':true:'1.2-2'}} km away
+        </p>
+
+        <a ion-button href=tel:{{formattedPhone}} >Call the donor!</a>
       </ion-card-content>
     </ion-card>
 

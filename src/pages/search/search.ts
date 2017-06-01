@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Locations} from '../../providers/locations';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -18,11 +17,14 @@ export class SearchPage {
     this.bloods = afDatabase.list('/Bloods')
 
   }
+
+
+
   pickBloodType(bloodType: string){
     console.log(bloodType);
     this.bloods = this.afDatabase.list('Bloods', {
       query: {
-        orderByChild: 'bloodType',
+        orderByChild: 'type',
         equalTo: bloodType
       }
 

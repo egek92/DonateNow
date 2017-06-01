@@ -7,6 +7,8 @@
 </ion-header> -->
 
 <ion-content class="home" >
+
+
   <ion-grid>
     <ion-row>
       <ion-col text-center>
@@ -15,8 +17,11 @@
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <button (click)="findBlood($event)" color="danger" ion-button round>FIND DONOR</button>
+        <button (click)="findBlood($event)" color="danger" ion-button round>Find Donor</button>
       </ion-col>
     </ion-row>
+    <ion-fab bottom right edge>
+    <button ion-fab (click)="map($event)" ><ion-icon name="locate"></ion-icon></button>
+    </ion-fab>
   </ion-grid>
 </ion-content>

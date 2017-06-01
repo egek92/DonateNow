@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Connectivity } from './connectivity';
 import { Geolocation } from 'ionic-native';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
+import { App } from 'ionic-angular';
 import { ListPage } from '../pages/list/list';
+import {SearchPage} from '../pages/search/search';
 
 declare var google;
+
 
 @Injectable()
 export class GoogleMaps {
@@ -18,9 +21,17 @@ export class GoogleMaps {
   markers: any = [];
   apiKey: string;
 
-  constructor(public connectivityService: Connectivity) {
+  constructor(public connectivityService: Connectivity, public app: App) {
 
   }
+
+  /*get navCtrl(): NavController {
+    return this.injector.get(NavController);
+  }*/
+
+  get navCtrl(): NavController {
+   return this.app.getActiveNav();
+}
 
   init(mapElement: any, pleaseConnect: any): Promise<any> {
 
@@ -208,7 +219,7 @@ export class GoogleMaps {
 
           this.markers.push(marker);
         //  infowindow.setContent('<button style="font-size: 2.5em; color: light; font-weight: bold; background: NONE;" (onclick)="launchAddPage">BE DONOR</button>');
-          infowindow.setContent('<button style="font-size: 1.5em; color: red; font-weight: bold; background: NONE;" ion-button (click)="launchAddPage">BE DONOR</button>' + "</br>" + results[1].formatted_address+'<p style="color: red;">'+distanceToYou+" miles from your location</p>");
+          infowindow.setContent(results[1].formatted_address+'<p style="color: red;">'+distanceToYou+" km away from your location</p>");
           infowindow.open(this.map, marker);
         } else {
           window.alert('No results found');
@@ -244,10 +255,10 @@ export class GoogleMaps {
     let lon2 = end.coords.longitude;
 
     console.log(lat1 , lon1);
-  /*  this.navController.push(ListPage, {
-    lat: lat1, lon: lon1
-}); */
-    //bunu listpage e ordan da firebase e atmak lazım
+
+
+
+
 
     let dLat = this.toRad((lat2 - lat1));
     let dLon = this.toRad((lon2 - lon1));
@@ -256,13 +267,32 @@ export class GoogleMaps {
     Math.sin(dLon / 2) *
     Math.sin(dLon / 2);
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    let d = R * c;
+
+    //mili km'ye cevirdim
+
+    let d = (R * c) + 0.6;
     console.log('distanceToYou '+d);
+
+    /* this.navCtrl.push(ListPage, {
+
+    lat: lat1, lon: lon1
+  }); */
+
+  this.navCtrl.push(ListPage, {
+
+  distance: d
+});
+
+
+
+
 
 
 
     return d;
   }
+
+
   toRad(x){
     return x * Math.PI / 180;
   }

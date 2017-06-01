@@ -16,17 +16,24 @@ export class HomePage {
 
   }
 
+  map(event) {
+
+  this.navCtrl.setRoot(HomePage);
+  this.navCtrl.push(MapPage);
+
+  }
+
   addBlood(event) {
 
-    this.navCtrl.setRoot(TabsPage);
-    this.navCtrl.push(ListPage);
+    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.push(MapPage);
 
   }
 
 
   findBlood(event) {
 
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot(HomePage);
     this.navCtrl.push(SearchPage);
 }
 
