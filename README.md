@@ -1,7 +1,6 @@
-# SE380 Project 
 
-DonateNow is a blood donor search application built on Ionic 2 Framework. It's an hybrid application that works both iOS and Android platform.
 
+DonateNow is a blood donor search application.
 # Screenshots
 
 ![Choose to be donor or search for donors](https://s30.postimg.org/3mgfkuc75/Ekran_Resmi_2017-06-01_23.42.43.png)
